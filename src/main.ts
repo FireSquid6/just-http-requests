@@ -6,6 +6,7 @@ interface UserRequest {
   body: string;
   params: Map<string, string>;
   headers: Map<string, string>;
+  bodyType: "plaintext" | "json" | "form-data" | "xml";
 }
 
 const request: UserRequest = {
@@ -14,9 +15,14 @@ const request: UserRequest = {
   body: "",
   params: new Map(),
   headers: new Map(),
+  bodyType: "plaintext",
 };
 
-// let response = "";
+// TODO:
+// - List of common headers to set
+// - Changing body type with dropdown
+// - Add ability to disable cors (I hate cors)
+// - Actually send the request
 
 document.getElementById("url")?.addEventListener("input", (e) => {
   request.url = (e.target as HTMLInputElement).value;
@@ -30,17 +36,13 @@ document.getElementById("method")?.addEventListener("change", (e) => {
   request.method = (e.target as HTMLSelectElement).value;
 });
 
-document.getElementById("send")?.addEventListener("click", () => {
+document.getElementById("send")?.addEventListener("click", async () => {
   console.log(request);
-  // fetch(request.url, {
-  //   method: request.method,
-  //   body: request.method !== "GET" ? request.body : null,
-  // })
-  //   .then((res) => res.text())
-  //   .then((res) => {
-  //     response = res;
-  //     document.getElementById("response")!.innerHTML = response;
-  //   });
+  const res = await fetch(request.url, {
+    method: request.method,
+    body: request.method !== "GET" ? request.body : null,
+  });
+  document.getElementById("response")!.innerText = await res.text();
 });
 
 document.getElementById("add-param")?.addEventListener("click", () => {
