@@ -1,10 +1,12 @@
-import "./App.css";
 import { RequestProvider } from "./context/request";
+import InputLine from "./components/InputLine";
 
 function App() {
   return (
     <RequestProvider>
-      <main></main>;
+      <main>
+        <InputLine />
+      </main>
     </RequestProvider>
   );
 }

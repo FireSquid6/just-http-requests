@@ -1,4 +1,6 @@
 import { useRequest } from "../context/request";
+import { useState } from "react";
+
 export default function InputLine() {
   return (
     <div className="flex flex-row">
@@ -15,6 +17,7 @@ function MethodSelector() {
         <option>GET</option>
         <option>POST</option>
         <option>PUT</option>
+        <option>PATCH</option>
         <option>DELETE</option>
       </select>
     </div>
@@ -23,6 +26,7 @@ function MethodSelector() {
 
 function UrlInput() {
   const [request, setRequest] = useRequest();
+  const [url, setUrl] = useState(request.url);
 
   return (
     <div>
@@ -30,11 +34,11 @@ function UrlInput() {
         className="input input-bordered w-full"
         placeholder="http://..."
         type="text"
-        value={request.url}
+        value={url}
         onChange={(e) => {
-          const newRequest = request;
-          request.url = e.target.value;
-          setRequest(newRequest);
+          setUrl(e.target.value);
+          setRequest({ ...request, url: e.target.value });
+          console.log(request);
         }}
       />
     </div>
