@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { Dispatch, createContext, useContext, useState } from "react";
 
 export interface UserRequest {
   url: string;
@@ -16,17 +16,22 @@ const defaultRequest: UserRequest = {
   body: "",
 };
 
-const RequestContext = createContext<UserRequest>(defaultRequest);
+const RequestContext = createContext<[UserRequest, Dispatch<UserRequest>]>([
+  defaultRequest, // default value
+  () => { }, // dummy function
+]);
 
 export function RequestProvider({ children }: { children: React.ReactNode }) {
+  const [request, setRequest] = useState<UserRequest>(defaultRequest);
+
   return (
-    <RequestContext.Provider value={defaultRequest}>
+    <RequestContext.Provider value={[request, setRequest]}>
       {children}
     </RequestContext.Provider>
   );
 }
 
-export function useRequest(): UserRequest {
-  const request = useContext(RequestContext);
-  return request;
+export function useRequest() {
+  const [request, setRequest] = useContext(RequestContext);
+  return [request, setRequest];
 }
