@@ -22,7 +22,6 @@ const request: UserRequest = {
 // - List of common headers to set
 // - Changing body type with dropdown
 // - Add ability to disable cors (I hate cors)
-// - Actually send the request
 
 document.getElementById("url")?.addEventListener("input", (e) => {
   request.url = (e.target as HTMLInputElement).value;
