@@ -1,7 +1,12 @@
 import "./App.css";
+import { RequestProvider } from "./context/request";
 
 function App() {
-  return <main></main>;
+  return (
+    <RequestProvider>
+      <main></main>;
+    </RequestProvider>
+  );
 }
 
 export default App;

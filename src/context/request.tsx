@@ -31,7 +31,7 @@ export function RequestProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useRequest() {
+export function useRequest(): [UserRequest, Dispatch<UserRequest>] {
   const [request, setRequest] = useContext(RequestContext);
   return [request, setRequest];
 }
