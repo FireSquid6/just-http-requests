@@ -1,13 +1,31 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTTP</title>
+</head>
+
+<body>
+  <script type="module" src="/src/main.ts"></script>
+  <main>
+    <div class="flex flex-row">
+      <select id="method">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="PATCH">PATCH</option>
+        <option value="DELETE">DELETE</option>
+      </select>
+      <input id="url" type="text" placeholder="http://localhost:3000" />
+      <button id="send">Send</button>
+    </div>
+    <div>
+      <textarea id="response" disabled rows="10" cols="50"></textarea>
+    </div>
+  </main>
+</body>
+
 </html>
