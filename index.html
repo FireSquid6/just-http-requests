@@ -10,35 +10,79 @@
 
 <body>
   <script type="module" src="/src/main.ts"></script>
-  <main>
-    <div class="flex flex-row">
-      <select id="method">
-        <option value="GET">GET</option>
-        <option value="POST">POST</option>
-        <option value="PUT">PUT</option>
-        <option value="PATCH">PATCH</option>
-        <option value="DELETE">DELETE</option>
-      </select>
-      <input id="url" type="text" placeholder="http://localhost:3000" />
-      <button id="send">Send</button>
+  <main class="flex flex-row m-4 font-mono">
+    <div class="mx-4 w-full">
+      <h1>Request</h1>
+      <div class="flex flex-row">
+        <select id="method">
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PUT">PUT</option>
+          <option value="PATCH">PATCH</option>
+          <option value="DELETE">DELETE</option>
+        </select>
+        <input class="w-full" id="url" type="text" placeholder="http://localhost:3000" />
+        <button id="send">Send</button>
+      </div>
+      <div>
+        <h2>Headers</h2>
+        <div>
+          <h3>Common</h3>
+          <div class="flex flex-row">
+            <span class="input input-bordered m-2 p-2 text-center align-middle">
+              Content-Type
+            </span>
+            <select id="content-type">
+              <option value="application/json">application/json</option>
+              <option value="application/x-www-form-urlencoded">
+                application/x-www-form-urlencoded
+              </option>
+              <option value="multipart/form-data">multipart/form-data</option>
+              <option value="text/plain">text/plain</option>
+              <option value="text/html">text/html</option>
+              <option value="application/xml">application/xml</option>
+              <option value="application/javascript">
+                application/javascript
+              </option>
+              <option value="application/octet-stream">
+                application/octet-stream
+              </option>
+              <option value="image/png">image/png</option>
+              <option value="image/jpeg">image/jpeg</option>
+              <option value="image/gif">image/gif</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <h3>Custom</h3>
+          <div id="headers"></div>
+          <button id="add-header">Add</button>
+        </div>
+      </div>
+      <div>
+        <h2>Params</h2>
+        <div id="params"></div>
+        <button id="add-param">Add</button>
+      </div>
+      <div>
+        <h2>Body</h2>
+        <textarea class="m-2 w-full" id="body" rows="10" cols="50"></textarea>
+      </div>
     </div>
-    <div>
-      <h2>Headers</h2>
-      <div id="headers"></div>
-      <button id="add-header">Add</button>
-    </div>
-    <div>
-      <h2>Params</h2>
-      <div id="params"></div>
-      <button id="add-param">Add</button>
-    </div>
-    <div>
-      <h2>Body</h2>
-      <textarea id="body" rows="10" cols="50"></textarea>
-    </div>
-    <div>
-      <h2>Response</h2>
-      <textarea id="response" disabled rows="10" cols="50"></textarea>
+    <div class="mx-4 w-full">
+      <h1>Response</h1>
+      <div class="flex flex-row">
+        <p class="mr-4">Status:</p>
+        <p id="status">Unknown</p>
+      </div>
+      <div>
+        <h2>Headers</h2>
+        <div id="response-headers"></div>
+      </div>
+      <div>
+        <h2>Body</h2>
+        <pre id="response-body"></pre>
+      </div>
     </div>
   </main>
 </body>

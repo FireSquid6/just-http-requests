@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+button {
+  @apply btn m-2;
+}
+
+input {
+  @apply input input-bordered p-2 m-2;
+}
+
+select {
+  @apply select select-bordered p-2 m-2;
+}
+
+h1 {
+  @apply text-2xl font-bold mb-4;
+}
+
+h2 {
+  @apply text-xl font-bold my-4;
+}
+
+h3 {
+  @apply text-lg font-bold mb-4;
+}
+
+textarea {
+  @apply textarea textarea-bordered p-2 m-2;
+}

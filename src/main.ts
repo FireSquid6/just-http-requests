@@ -6,7 +6,7 @@ interface UserRequest {
   body: string;
   params: Map<string, string>;
   headers: Map<string, string>;
-  bodyType: "plaintext" | "json" | "form-data" | "xml";
+  contentType: string;
 }
 
 const request: UserRequest = {
@@ -15,7 +15,7 @@ const request: UserRequest = {
   body: "",
   params: new Map(),
   headers: new Map(),
-  bodyType: "plaintext",
+  contentType: "application/json",
 };
 
 // TODO:
